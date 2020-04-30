@@ -32,7 +32,9 @@ function normalizeFitness() {
 function nextGeneration() {
     var newPopulation = [];
     for (let i = 0; i < population.length; i++) {
-        var order = pickOne(population, fitness);
+        var orderA = pickOne(population, fitness);
+        var orderB = pickOne(population, fitness);
+        var order = crossOver(orderA,orderB);
         // Mutation
         // 50% of the time shuffle one spot to see if it improves
         if (random(1) < 0.05) {
@@ -55,6 +57,22 @@ function pickOne(list, prob) {
     }
     index--;
     return list[index].slice();
+}
+
+function crossOver(orderA,orderB){
+    var start = floor(random(1, orderA.length-2));
+    var end = floor(random(start, orderA.length-2));
+    var newMidOrder = orderA.slice(start,end);
+
+    for (let i = 1; i < orderB.length-1; i++) {
+        var city = orderB[i];
+        if (!newMidOrder.includes(city)) {
+            newMidOrder.push(city);
+        }
+    }
+    var newFullOrder = [0,orderA.length-1];
+    newFullOrder.splice.apply(newFullOrder, [1,0].concat(newMidOrder));
+    return newFullOrder;
 }
 
 function mutate(order) {
