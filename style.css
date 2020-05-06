@@ -3,6 +3,10 @@
     text-align: center;
     color: #2F2E41;
 }
+.navbar-brand img{
+    width: 40px;
+    height: 40px;
+}
 .btn-standout{
     border-radius: 30px;
     background-color: #6C63FF;
@@ -22,8 +26,20 @@
 .jumbotron .caption-1 .display-4{
     font-size: 46px;
 }
+.vi-auto-ga {
+    height: 500px;
+    background-color: #2F2E41;
+    margin-bottom: 30px;
+}
+.title{
+    margin: 30px 0px 30px;
+}
 /*DESKTOP +*/
 @media (min-width: 992px) { 
+    .navbar-brand img{
+        width: 50px;
+        height: 50px;
+    }
     .nav-item {
         text-transform: uppercase;
         margin-right: 30px;
