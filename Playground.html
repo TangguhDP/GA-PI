@@ -5,22 +5,103 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Manual GA</title>
-  <style>
-    body {
-      padding: 0;
-      margin: 0;
-    }
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
   </style>
   <script src="library/p5.min.js"></script>
-  <!-- <script src="library/p5.sound.min.js"></script> -->
-  <!-- <script src="sketch.js"></script> -->
   <script src="manualGA.js"></script>
   <script src="GA.js"></script>
 </head>
-<h2 style="color: blue;">Best ever solution</h2>
-<h2 style="color: red;">Best current solution</h2>
-  <div id="canvas"></div>
+<!-- NAVBAR START -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="#">
+      <img src="/images/Logo 1.svg">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav ml-auto">
+        <a class="nav-item nav-link active" href="index.html">Introduction <span class="sr-only">(current)</span></a>
+        <a class="btn btn-standout nav-item" href="Playground.html">Playground</a>
+      </div>
+    </div>
+  </div>
+</nav>
+<!-- NAVBAR END -->
+<!-- CONTENT START -->
+<div class="container" style="padding-top: 100px; padding-bottom: 100px;">
+  <div id="canvas">
+
+  </div>
+  <div class="row text-center pt-4">
+    <div class="col-lg"><a class="btn btn-standout btn-lg" href="#" onclick="startGA()">START TSP X GA</a></div>
+</div>
+  <div class="title text-center"><span class="display-4">Result of Optimalization</span></div>
+  <div class="row">
+    <div class="col-lg align-self-center">
+      <div class="row pb-3">
+        <div class="col-sm-12 col-lg">
+          <b class ="sm-result">Best Route</b>
+        </div>
+        <div class="col-sm-12 col-lg text-right">
+          <span id="bestRoute" class ="sm-result">1-2-3-4-5-6-7-8</span>
+        </div>
+      </div>
+      <div class="row pb-3">
+        <div class="col-sm-12 col-lg">
+          <b class ="sm-result">Best Distance</b>
+        </div>
+        <div class="col-sm-12 col-lg text-right">
+          <span id="bestDist" class ="sm-result">170</span>
+        </div>
+      </div>
+      <div class="row pb-3">
+        <div class="col-sm-12 col-lg">
+          <b class ="sm-result">Current Routes</b>
+        </div>
+        <div class="col-sm-12 col-lg text-right">
+          <span id="currRoute" class ="sm-result">1-2-3-4-5-6-7-8</span>
+        </div>
+      </div>
+      <div class="row pb-3">
+        <div class="col-sm-12 col-lg">
+          <b class ="sm-result">Current Distance</b>
+        </div>
+        <div class="col-sm-12 col-lg text-right">
+          <span id="currDist" class ="sm-result">Infinity</span>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg" style="background-color: #2F2E41;">
+      <span style="color: #fff;font-size: 25px;">Statistic</span>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+    </div>
+  </div>
+</div>
+<!-- CONTENT END -->
+
 <body>
 </body>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+  integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+  integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+  integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 </html>

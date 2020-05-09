@@ -9,7 +9,8 @@ function calculateFitness() {
         if (d < currentRecord) {
             currentRecord = d;
             currentBest = population[i];
-            console.log('current record ' + currentRecord);
+            // console.log('current record ' + currentRecord);
+            // document.getElementById('currDist').textContent = currentRecord.toFixed(4);
         }
         // if (currentBest == bestEver) {
         //     console.log('Finished');
@@ -17,6 +18,9 @@ function calculateFitness() {
         // }
         fitness[i] = 1 / (d + 1);
     }
+    //best solution
+    document.getElementById('currDist').textContent = currentRecord.toFixed(4);
+    statsCurr.push(currentRecord);
 }
 
 function normalizeFitness() {
@@ -34,9 +38,9 @@ function nextGeneration() {
     for (let i = 0; i < population.length; i++) {
         var orderA = pickOne(population, fitness);
         var orderB = pickOne(population, fitness);
-        var order = crossOver(orderA,orderB);
+        var order = crossOver(orderA, orderB);
         // Mutation
-        // 50% of the time shuffle one spot to see if it improves
+        // 10% of the time shuffle one spot to see if it improves
         if (random(1) < 0.05) {
             mutate(order);
         }
@@ -59,19 +63,19 @@ function pickOne(list, prob) {
     return list[index].slice();
 }
 
-function crossOver(orderA,orderB){
-    var start = floor(random(1, orderA.length-2));
-    var end = floor(random(start, orderA.length-2));
-    var newMidOrder = orderA.slice(start,end);
+function crossOver(orderA, orderB) {
+    var start = floor(random(1, orderA.length - 2));
+    var end = floor(random(start, orderA.length - 2));
+    var newMidOrder = orderA.slice(start, end);
 
-    for (let i = 1; i < orderB.length-1; i++) {
+    for (let i = 1; i < orderB.length - 1; i++) {
         var city = orderB[i];
         if (!newMidOrder.includes(city)) {
             newMidOrder.push(city);
         }
     }
-    var newFullOrder = [0,orderA.length-1];
-    newFullOrder.splice.apply(newFullOrder, [1,0].concat(newMidOrder));
+    var newFullOrder = [0, orderA.length - 1];
+    newFullOrder.splice.apply(newFullOrder, [1, 0].concat(newMidOrder));
     return newFullOrder;
 }
 

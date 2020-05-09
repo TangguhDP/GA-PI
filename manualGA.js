@@ -4,7 +4,7 @@
 
 //number of cities
 var num = 0;
-//Max number of cities
+//Max number of cities. try 15
 var maxNum = 8;
 //Order
 var order = [];
@@ -14,31 +14,41 @@ var cities = [];
 var population = [];
 //Fiteness
 var fitness = [];
-//MAxPop
+//MaxPop. try 1000
 var popSize = 200;
 var currentBest = [];
 var buttonStart;
+// var statistik
+var statsCurr =[];
+var statsBest =[];
 
 //recordedDistance
 var recordDistance = Infinity;
 var bestEver = [];
+
 function setup() {
+
+    var canvasDiv = document.getElementById('canvas');
+    var widthCanvas = canvasDiv.offsetWidth;
     //Create canvas
-    var c = createCanvas(600, displayHeight);
+    var c = createCanvas(widthCanvas, 500);
+    c.mouseClicked(addCityPos);
     c.parent('canvas');
-    background(0);
-    fill(255);
+    frameRate(25)
+    // background('#2F2E41');
+    // fill(255);
     //Create button
-    buttonStart = createButton('Start GA');
-    buttonStart.position(515, 360);
-    buttonStart.addClass('button-startGA');
-    buttonStart.mousePressed(startGA);
+    // buttonStart = createButton('Start GA');
+    // buttonStart.position(width, 200);
+    // buttonStart.addClass('button-startGA');
+    // buttonStart.mousePressed(startGA);
+    // buttonStart.addClass("btn btn-standout");
     //Initiate no loop
     noLoop();
 }
 
 function draw() {
-    background(0);
+    background('#2F2E41');
     //Implementation GA
     calculateFitness();
     normalizeFitness();
@@ -65,18 +75,42 @@ function draw() {
         ellipse(cities[loc].x, cities[loc].y, 15);
     }
     endShape();
-    if (currentBest == recordDistance) {
-        console.log("Finished");
-        noLoop();
-    }
-    console.log('order ' + order);
-    console.log('best ever ' + bestEver);
-    console.log(recordDistance);
-    console.log('current best ' + currentBest);
 
+    // console.log('order ' + order);
+    // console.log('best ever ' + bestEver);
+    document.getElementById('bestRoute').textContent = bestEver;
+    // console.log(recordDistance);
+    document.getElementById('bestDist').textContent = recordDistance.toFixed(4);
+    // console.log('current best ' + currentBest);
+    document.getElementById('currRoute').textContent = currentBest;
+    statsBest.push(recordDistance);
+    
+    stroke(255);
+    noFill();
+    beginShape();
+    for (let i = 0; i < statsBest.length; i++) {
+        var y = map(statsBest[i], 0, width*2, height, 0);
+        vertex(i, y);
+    }
+    endShape();
+    if (statsBest.length > width) {
+        statsBest.splice(0,1);
+    }
+    
+    stroke('red');
+    noFill();
+    beginShape();
+    for (let i = 0; i < statsCurr.length; i++) {
+        var y = map(statsCurr[i], 0, width*2, height, 0);
+        vertex(i, y);
+    }
+    endShape();
+    if (statsCurr.length > width) {
+        statsCurr.splice(0,1);
+    }
 }
 
-function mouseClicked() {
+function addCityPos() {
     //If city reach maxNum don't draw any more city
     if (num >= maxNum) {
         return;
