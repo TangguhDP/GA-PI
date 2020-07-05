@@ -21,7 +21,8 @@ var buttonStart;
 // var statistik
 var statsCurr =[];
 var statsBest =[];
-
+var bestEverText = [];
+var currentBestText = [];
 //recordedDistance
 var recordDistance = Infinity;
 var bestEver = [];
@@ -54,12 +55,17 @@ function draw() {
     normalizeFitness();
     nextGeneration();
 
-    stroke('blue');
-    strokeWeight(2);
+    // stroke('blue');
+    // strokeWeight(2);
     noFill();
     beginShape();
     for (let i = 0; i < bestEver.length; i++) {
         var loc = bestEver[i];
+        stroke(255);
+        strokeWeight(1);
+        text(bestEver[i]+1, cities[loc].x, cities[loc].y + 130);
+        stroke('blue');
+        strokeWeight(2);
         vertex(cities[loc].x, cities[loc].y + 150);
         ellipse(cities[loc].x, cities[loc].y + 150, 15);
     }
@@ -77,12 +83,17 @@ function draw() {
     endShape();
 
     // console.log('order ' + order);
-    // console.log('best ever ' + bestEver);
-    document.getElementById('bestRoute').textContent = bestEver;
+    // for displaying route the way user understand
+    for (let i = 0; i < bestEver.length; i++) {
+        bestEverText[i] = bestEver[i]+1;
+        currentBestText[i] = currentBest[i]+1;
+    }
+    console.log('best ever ' + bestEver);
+    document.getElementById('bestRoute').textContent = bestEverText;
     // console.log(recordDistance);
     document.getElementById('bestDist').textContent = recordDistance.toFixed(4);
-    // console.log('current best ' + currentBest);
-    document.getElementById('currRoute').textContent = currentBest;
+    console.log('current best ' + currentBest);
+    document.getElementById('currRoute').textContent = currentBestText;
     statsBest.push(recordDistance);
     
     stroke(255);
