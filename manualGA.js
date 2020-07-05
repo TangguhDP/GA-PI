@@ -88,37 +88,13 @@ function draw() {
         bestEverText[i] = bestEver[i]+1;
         currentBestText[i] = currentBest[i]+1;
     }
-    console.log('best ever ' + bestEver);
+    // console.log('best ever ' + bestEver);
     document.getElementById('bestRoute').textContent = bestEverText;
     // console.log(recordDistance);
     document.getElementById('bestDist').textContent = recordDistance.toFixed(4);
-    console.log('current best ' + currentBest);
+    // console.log('current best ' + currentBest);
     document.getElementById('currRoute').textContent = currentBestText;
     statsBest.push(recordDistance);
-    
-    stroke(255);
-    noFill();
-    beginShape();
-    for (let i = 0; i < statsBest.length; i++) {
-        var y = map(statsBest[i], 0, width*2, height, 0);
-        vertex(i, y);
-    }
-    endShape();
-    if (statsBest.length > width) {
-        statsBest.splice(0,1);
-    }
-    
-    stroke('red');
-    noFill();
-    beginShape();
-    for (let i = 0; i < statsCurr.length; i++) {
-        var y = map(statsCurr[i], 0, width*2, height, 0);
-        vertex(i, y);
-    }
-    endShape();
-    if (statsCurr.length > width) {
-        statsCurr.splice(0,1);
-    }
 }
 
 function addCityPos() {
