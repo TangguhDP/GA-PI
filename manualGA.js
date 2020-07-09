@@ -21,7 +21,8 @@ var buttonStart;
 // var statistik
 var statsCurr =[];
 var statsBest =[];
-
+var bestEverText = [];
+var currentBestText = [];
 //recordedDistance
 var recordDistance = Infinity;
 var bestEver = [];
@@ -54,12 +55,17 @@ function draw() {
     normalizeFitness();
     nextGeneration();
 
-    stroke('blue');
-    strokeWeight(2);
+    // stroke('blue');
+    // strokeWeight(2);
     noFill();
     beginShape();
     for (let i = 0; i < bestEver.length; i++) {
         var loc = bestEver[i];
+        stroke(255);
+        strokeWeight(1);
+        text(bestEver[i]+1, cities[loc].x, cities[loc].y + 130);
+        stroke('blue');
+        strokeWeight(2);
         vertex(cities[loc].x, cities[loc].y + 150);
         ellipse(cities[loc].x, cities[loc].y + 150, 15);
     }
@@ -77,37 +83,18 @@ function draw() {
     endShape();
 
     // console.log('order ' + order);
+    // for displaying route the way user understand
+    for (let i = 0; i < bestEver.length; i++) {
+        bestEverText[i] = bestEver[i]+1;
+        currentBestText[i] = currentBest[i]+1;
+    }
     // console.log('best ever ' + bestEver);
-    document.getElementById('bestRoute').textContent = bestEver;
+    document.getElementById('bestRoute').textContent = bestEverText;
     // console.log(recordDistance);
     document.getElementById('bestDist').textContent = recordDistance.toFixed(4);
     // console.log('current best ' + currentBest);
-    document.getElementById('currRoute').textContent = currentBest;
+    document.getElementById('currRoute').textContent = currentBestText;
     statsBest.push(recordDistance);
-    
-    stroke(255);
-    noFill();
-    beginShape();
-    for (let i = 0; i < statsBest.length; i++) {
-        var y = map(statsBest[i], 0, width*2, height, 0);
-        vertex(i, y);
-    }
-    endShape();
-    if (statsBest.length > width) {
-        statsBest.splice(0,1);
-    }
-    
-    stroke('red');
-    noFill();
-    beginShape();
-    for (let i = 0; i < statsCurr.length; i++) {
-        var y = map(statsCurr[i], 0, width*2, height, 0);
-        vertex(i, y);
-    }
-    endShape();
-    if (statsCurr.length > width) {
-        statsCurr.splice(0,1);
-    }
 }
 
 function addCityPos() {
