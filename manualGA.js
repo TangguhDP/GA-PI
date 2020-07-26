@@ -8,8 +8,10 @@ var num = 0;
 var maxNum = 10;
 //Order
 var order = [];
+var BFOrder = [];
 //Track cities location
 var cities = [];
+var BFCities = [];
 //Population
 var population = [];
 //Fiteness
@@ -21,11 +23,15 @@ var buttonStart;
 // var statistik
 var statsCurr = [];
 var statsBest = [];
+var BFStatsCurr = [];
+var BFStatsBest = [];
 var bestEverText = [];
 var currentBestText = [];
 //recordedDistance
 var recordDistance = Infinity;
+var BFBestRecordDist = Infinity;
 var bestEver = [];
+var BFBestEver = [];
 
 function setup() {
 
@@ -42,11 +48,13 @@ function setup() {
 
 function draw() {
     background('#2F2E41');
+    //StartBF
+    startBF();
+    // initializeBF();
     //Implementation GA
     calculateFitness();
     normalizeFitness();
     nextGeneration();
-
     // stroke('blue');
     // strokeWeight(2);
     noFill();
@@ -97,8 +105,10 @@ function addCityPos() {
         //Create location of city
         var v = createVector(mouseX, mouseY);
         cities[num] = v;
+        BFCities[num] = v;
         //Create order of city
         order[num] = num;
+        BFOrder[num] = num;
         //Continue to next city
         num++;
     }
@@ -117,6 +127,7 @@ function addCityPos() {
         strokeWeight(1);
         line(cities[num - 2].x, cities[num - 2].y, mouseX, mouseY);
     }
+    
     // console.log(cities[num-1].x);
     // console.log(order);
 }
@@ -128,6 +139,8 @@ function startGA() {
         population[i] = order.slice();
         acak(population[i]);
     }
+    //BF
+    initializeBF(cities, order);
     //Start drawing and looping
     loop();
 }
@@ -139,7 +152,6 @@ function acak(urut) {
         urut.splice(i + 1, 0, result[i]);
     }
     // console.log('order' + order);
-
 }
 
 function calcDistance(points, order) {

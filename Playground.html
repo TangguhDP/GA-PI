@@ -13,6 +13,7 @@
   <script src="manualGA.js"></script>
   <script src="stat.js"></script>
   <script src="GA.js"></script>
+  <script src="BF.js"></script>
 </head>
 <!-- NAVBAR START -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
@@ -93,7 +94,7 @@
           <b class="sm-result">Best Route</b>
         </div>
         <div class="col-sm-12 col-lg text-right">
-          <span id="" class="sm-result">1-2-3-4-5-6-7-8</span>
+          <span id="BFBestRoute" class="sm-result">1-2-3-4-5-6-7-8</span>
         </div>
       </div>
       <div class="row pb-3">
@@ -101,7 +102,7 @@
           <b style="color: blue;" class="sm-result">Best Distance</b>
         </div>
         <div class="col-sm-12 col-lg text-right">
-          <span id="" class="sm-result">170</span>
+          <span id="BFBestDistance" class="sm-result">170</span>
         </div>
       </div>
       <div class="row pb-3">
@@ -109,7 +110,7 @@
           <b class="sm-result">Current Routes</b>
         </div>
         <div class="col-sm-12 col-lg text-right">
-          <span id="" class="sm-result">1-2-3-4-5-6-7-8</span>
+          <span id="BFCurrRoute" class="sm-result">1-2-3-4-5-6-7-8</span>
         </div>
       </div>
       <div class="row pb-3">
@@ -117,14 +118,17 @@
           <b style="color: red;" class="sm-result">Current Distance</b>
         </div>
         <div class="col-sm-12 col-lg text-right">
-          <span id="" class="sm-result">Infinity</span>
+          <span id="BFCurrDistance" class="sm-result">Infinity</span>
         </div>
       </div>
     </div>
   </div>
   <div class="row">
-    <div id="stat" class="col-lg-6 offset-lg-3" style="background-color: #2F2E41; min-height: 200px; padding-left: 0px;">
-      <span style="color: #fff;font-size: 25px; padding-left: 1em;">Statistic</span><br>
+    <div id="statGA" class="col-lg-6" style="background-color: #2F2E41; min-height: 200px; padding-left: 0px;">
+      <span style="color: #fff;font-size: 25px; padding-left: 1em;">Statistic GA</span><br>
+    </div>
+    <div id="statBF" class="col-lg-6" style="background-color: #2F2E41; min-height: 200px; padding-left: 0px;">
+      <span style="color: #fff;font-size: 25px; padding-left: 1em;">Statistic BF</span><br>
     </div>
   </div>
 </div>
