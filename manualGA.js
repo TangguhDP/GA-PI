@@ -5,7 +5,7 @@
 //number of cities
 var num = 0;
 //Max number of cities. try 15
-var maxNum = 8;
+var maxNum = 10;
 //Order
 var order = [];
 //Track cities location
@@ -19,8 +19,8 @@ var popSize = 200;
 var currentBest = [];
 var buttonStart;
 // var statistik
-var statsCurr =[];
-var statsBest =[];
+var statsCurr = [];
+var statsBest = [];
 var bestEverText = [];
 var currentBestText = [];
 //recordedDistance
@@ -35,15 +35,7 @@ function setup() {
     var c = createCanvas(widthCanvas, 500);
     c.mouseClicked(addCityPos);
     c.parent('canvas');
-    frameRate(25)
-    // background('#2F2E41');
-    // fill(255);
-    //Create button
-    // buttonStart = createButton('Start GA');
-    // buttonStart.position(width, 200);
-    // buttonStart.addClass('button-startGA');
-    // buttonStart.mousePressed(startGA);
-    // buttonStart.addClass("btn btn-standout");
+    frameRate(30)
     //Initiate no loop
     noLoop();
 }
@@ -63,7 +55,7 @@ function draw() {
         var loc = bestEver[i];
         stroke(255);
         strokeWeight(1);
-        text(bestEver[i]+1, cities[loc].x, cities[loc].y + 130);
+        text(bestEver[i] + 1, cities[loc].x, cities[loc].y + 130);
         stroke('blue');
         strokeWeight(2);
         vertex(cities[loc].x, cities[loc].y + 150);
@@ -85,8 +77,8 @@ function draw() {
     // console.log('order ' + order);
     // for displaying route the way user understand
     for (let i = 0; i < bestEver.length; i++) {
-        bestEverText[i] = bestEver[i]+1;
-        currentBestText[i] = currentBest[i]+1;
+        bestEverText[i] = bestEver[i] + 1;
+        currentBestText[i] = currentBest[i] + 1;
     }
     // console.log('best ever ' + bestEver);
     document.getElementById('bestRoute').textContent = bestEverText;

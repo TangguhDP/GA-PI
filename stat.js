@@ -8,19 +8,17 @@ var statSketch = function (p) {
 
     }
     p.draw = function () {
-        p.background('yellow');
-        // p.background('#2F2E41');
-        // p.translate(0, p.heightCanvas2 / 2);
+        p.background('#2F2E41');
         p.strokeWeight(3)
         p.stroke('blue');
         p.noFill();
         p.beginShape();
         for (let i = 0; i < statsBest.length; i++) {
-            var y = map(statsBest[i], 0, p.widthCanvas2 * 2, p.heightCanvas2, 0);
+            var y = map(statsBest[i], 0, p.widthCanvas2 * 5, p.heightCanvas2, 0);
             p.vertex(i, y);
         }
         p.endShape();
-        if (statsBest.length > p.width.canvasDiv2) {
+        if (statsBest.length > p.widthCanvas2) {
             statsBest.splice(0, 1);
         }
 
@@ -28,11 +26,11 @@ var statSketch = function (p) {
         p.noFill();
         p.beginShape();
         for (let i = 0; i < statsCurr.length; i++) {
-            var y = map(statsCurr[i], 0, p.width.canvasDiv2 * 2, p.height.canvasDiv2, 0);
+            var y = map(statsCurr[i], 0, p.widthCanvas2 * 5, p.heightCanvas2, 0);
             p.vertex(i, y);
         }
         p.endShape();
-        if (statsCurr.length > p.width.canvasDiv2) {
+        if (statsCurr.length > p.widthCanvas2) {
             statsCurr.splice(0, 1);
         }
 
