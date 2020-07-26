@@ -90,10 +90,10 @@ DNA.prototype.show = function() {
   endShape();
 
   // Cities
-  fill(255);
+  fill('#6C63FF');
   for (var i = 0; i < this.order.length; i++) {
     var n = this.order[i];
-    ellipse(cities[n].x, cities[n].y, 8, 8);
+    ellipse(cities[n].x, cities[n].y, 10, 10);
   }
 }
 

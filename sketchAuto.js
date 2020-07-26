@@ -6,7 +6,7 @@
 
 // Cities
 var cities = [];
-var totalCities = 15;
+var totalCities = 10;
 
 // Best path overall
 var recordDistance = Infinity;
@@ -17,8 +17,9 @@ var population = [];
 var popTotal = 200;
 
 function setup() {
-  var gambar = createCanvas(600, 600);
-  gambar.parent('gambar');
+  var gambar = document.getElementById('vi-auto-ga');
+  createCanvas(gambar.offsetWidth, gambar.offsetHeight).parent('vi-auto-ga');
+  frameRate(15)
 
   // Make random cities
   for (var i = 0; i < totalCities; i++) {
@@ -35,8 +36,7 @@ function setup() {
 }
 
 function draw() {
-  background(0);
-
+  background('#2F2E41');
   // Each round let's find the best and worst
   var minDist = Infinity;
   var maxDist = 0;
@@ -71,7 +71,7 @@ function draw() {
   // Show the best ever!
   bestEver.show();
 
-  console.log(bestEver.dist);
+  // console.log(bestEver.dist);
   
 
   // Map all the fitness values between 0 and 1

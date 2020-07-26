@@ -9,7 +9,7 @@ var statSketch = function (p) {
     }
     p.draw = function () {
         p.background('#2F2E41');
-        p.strokeWeight(3)
+        p.strokeWeight(3);
         p.stroke('blue');
         p.noFill();
         p.beginShape();
